@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 2105
+
+eureka:
+  client:
+    serviceUrl:
+#      defaultZone: http://eureka.didispace.com/eureka/
+      defaultZone: http://localhost:1001/eureka/
+
+#使用Spring Cloud Zuul来实现服务网关的功能,为所有内部服务提供了一个统一的对外入口，同时对于服务的路由都是自动创建了，减少了传统方式大量的运维配置工作
+#访问http://localhost:2105/eureka-consumer-ribbon-hystrix/consumer或者http://localhost:2105/eureka-client/dc
+#学习过滤器使用

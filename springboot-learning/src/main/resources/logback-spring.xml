@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 此xml在spring-boot-1.5.3.RELEASE.jar里 -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <!-- 开启后可以通过jmx动态控制日志级别(springboot Admin的功能) -->
+    <!--<jmxConfigurator/>-->
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<File>/home/hfw-client/hfw_log/stdout.log</File>-->
+        <File>D:/www/SpringBoot/demo/springboot-learning/log/stdout.log</File>
+        <encoder>
+            <pattern>%date [%level] [%thread] %logger{60} [%file : %line] %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 添加.gz 历史日志会启用压缩 大大缩小日志文件所占空间 -->
+            <!--<fileNamePattern>/home/hfw-client/hfw_log/stdout.log.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <fileNamePattern>D:/www/SpringBoot/demo/springboot-learning/log/stdout.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory><!--  保留30天日志 -->
+        </rollingPolicy>
+    </appender>
+
+    <!--般针对mapper的包进行DEBUG日志设置，仅打印sql语句-->
+    <logger name="com.example.mapper" level="DEBUG" />
+
+    <!--低到高TRACE < DEBUG < INFO < WARN < ERROR < FATAL-->
+    <!--root标签的level属性改为DEBUG时，会打印最详细的日志，包括mybatis的sql语句（量太大建议开发测试时才用）-->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

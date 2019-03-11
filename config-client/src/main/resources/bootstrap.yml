@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      discovery:
+        enabled: true  #开启通过服务来访问Config Server的功能
+        serviceId: config-server    #指定Config Server注册的服务名
+#      uri: http://localhost:1201/  #通过URI的方式访问
+#      profile: default
+      profile: dev
+      label: master
+server:
+  port: 2001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh,health

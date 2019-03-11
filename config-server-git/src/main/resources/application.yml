@@ -1,0 +1,21 @@
+  spring:
+    application:
+      name: config-server
+    cloud:
+      config:
+        server:
+          git:
+            uri: https://github.com/luoxianjiao/config-repo-demo
+#            username:
+#            password:
+  server:
+    port: 1201
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:1001/eureka/
+
+
+#同时有properties和yml文件时，优先加载application.properties文件
+#http://localhost:1201/config-client/dev/master
+#json中返回了应用名：config-client，环境名：dev，分支名：master，以及default环境和dev环境的配置内容

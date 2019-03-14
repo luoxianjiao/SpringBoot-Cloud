@@ -19,11 +19,11 @@ public class DcController {
 
     @GetMapping("/dc")
     public String dc() {
-//        try {
-//            Thread.sleep(5000L);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(500L);//add sleep
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String services = "Services: "+discoveryClient.getServices();
         System.out.println(services+"bbb");
         return services;
